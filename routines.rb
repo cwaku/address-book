@@ -52,6 +52,8 @@ module Routines
       new_contact_number = gets.chomp
       contact.contact_number = new_contact_number unless new_contact_number.empty?
       puts 'Contact edited successfully'
+
+      contact.generate_summary
     end
   end
 end
