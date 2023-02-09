@@ -1,8 +1,10 @@
 require_relative './modules/contact'
 require_relative './routines'
+require_relative './saveContact'
 
 class Main
   include Routines
+  include SaveContacts
 
   def initialize
     @contacts = []

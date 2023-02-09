@@ -1,3 +1,5 @@
+# Description: This module contains all the methods that are used to perform the CRUD operations on the contact list
+
 module Routines
   def add_contact
     puts 'Enter First Name: '
@@ -8,6 +10,9 @@ module Routines
     contact_number = gets.chomp
     contact = Contact.new(first_name, last_name, contact_number)
     @contacts << contact
+
+    save_contact(@contacts)
+
 
     puts 'Contact added successfully'
     contact.generate_summary
