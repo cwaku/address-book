@@ -47,13 +47,13 @@ module Routines
       puts 'Enter the contact id to edit'
       id = gets.chomp.to_i
       contact = @contacts[id - 1]
-      puts "Enter First Name to replace \"#{contact.first_name}\" (Leave blank to keep old value):"
+      puts "(#{contact.first_name}):"
       new_first_name = gets.chomp
       contact.first_name = new_first_name unless new_first_name.empty?
-      puts "Enter Last Name to replace \"#{contact.last_name}\" (Leave blank to keep old value):"
+      puts "(#{contact.last_name}):"
       new_last_name = gets.chomp
       contact.last_name = new_last_name unless new_last_name.empty?
-      puts "Enter Contact Number to replace \"#{contact.contact_number}\" (Leave blank to keep old value):"
+      puts "(#{contact.contact_number}):"
       new_contact_number = gets.chomp
       contact.contact_number = new_contact_number unless new_contact_number.empty?
       puts 'Contact edited successfully'

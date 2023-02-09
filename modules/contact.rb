@@ -13,4 +13,6 @@ class Contact < Item
   def generate_summary
     puts " First Name: #{first_name} \n Last Name: #{last_name} \n Contact Number: #{contact_number}"
   end
+
+  def 
 end
