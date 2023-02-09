@@ -33,6 +33,8 @@ module Routines
       puts 'Enter the contact id to delete'
       id = gets.chomp.to_i
       @contacts.delete_at(id - 1)
+
+      save_contact(@contacts)
       puts 'Contact deleted successfully'
     end
   end
@@ -55,9 +57,17 @@ module Routines
       puts "(#{contact.contact_number}):"
       new_contact_number = gets.chomp
       contact.contact_number = new_contact_number unless new_contact_number.empty?
+
+      save_contact(@contacts)
       puts 'Contact edited successfully'
 
       contact.generate_summary
     end
+  end
+
+  # TODO: Fix this(Purpose => To ask for confirmation before action are taken)
+  def confirmation(action)
+    puts "Are you sure you want to #{action}? (y/n)"
+    gets.chomp.downcase == 'y'
   end
 end

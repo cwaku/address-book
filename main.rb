@@ -7,7 +7,7 @@ class Main
   include SaveContacts
 
   def initialize
-    @contacts = []
+    @contacts = load_contacts
   end
 
   def start
@@ -15,6 +15,9 @@ class Main
     loop do
       options = list_options
       break if options == 5
+
+      # invalid option if any other number
+      next unless (1..4).include?(options)
 
       add_contact if options == 1
       edit_contact if options == 2
