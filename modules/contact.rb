@@ -9,4 +9,8 @@ class Contact < Item
     @last_name = last_name
     @contact_number = contact_number
   end
+
+  def generate_summary
+    puts " First Name: #{first_name} \n Last Name: #{last_name} \n Contact Number: #{contact_number}"
+  end
 end

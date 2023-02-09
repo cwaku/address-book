@@ -10,6 +10,7 @@ module Routines
     @contacts << contact
 
     puts 'Contact added successfully'
+    contact.generate_summary
   end
 
   def list_contacts
