@@ -13,8 +13,6 @@ module SaveContacts
       })
     end
 
-    File.open('./data/contacts.json', 'w') do |file|
-      file.write(JSON.generate(data))
-    end
+    File.write('./data/contacts.json', JSON.generate(data))
   end
 end

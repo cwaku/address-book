@@ -13,7 +13,6 @@ module Routines
 
     save_contact(@contacts)
 
-
     puts 'Contact added successfully'
     contact.generate_summary
   end
@@ -29,7 +28,7 @@ module Routines
     list_contacts
 
     if @contacts.empty?
-      puts "Nothing to delete"
+      puts 'Nothing to delete'
     else
       puts 'Enter the contact id to delete'
       id = gets.chomp.to_i
@@ -42,7 +41,7 @@ module Routines
     list_contacts
 
     if @contacts.empty?
-      puts "Nothing to edit"
+      puts 'Nothing to edit'
     else
       puts 'Enter the contact id to edit'
       id = gets.chomp.to_i
