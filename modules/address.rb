@@ -1,4 +1,4 @@
-class Item
+class Address
   attr_accessor :id
 
   def initialize()
