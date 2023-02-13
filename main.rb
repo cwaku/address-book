@@ -22,7 +22,7 @@ class Main
       add_contact_routine if options == 1
       edit_contact if options == 2
       list_contacts if options == 3
-      delete_contact if options == 4
+      delete_contact_routine if options == 4
     end
   end
 
@@ -48,6 +48,21 @@ class Main
 
     contact = Contact.new(first_name, last_name, contact_number)
     contact.add_contact
+  end
+
+  def delete_contact_routine
+    list_contacts
+
+    if @contacts.empty?
+      puts 'Nothing to delete'
+    else
+      puts 'Enter the contact id to delete'
+      id = gets.chomp.to_i
+      @contacts.delete_at(id - 1)
+
+      save_contact(@contacts)
+      puts 'Contact deleted successfully'
+    end
   end
 
   def edit_contact

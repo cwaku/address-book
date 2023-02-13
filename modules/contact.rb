@@ -19,7 +19,7 @@ class Contact < Address
 
   def delete_contact(id)
     @contacts.delete_at(id - 1)
-    # remove_contact(self)
+    remove_contact(self)
   end
 
   def edit_contact(contact)
@@ -57,6 +57,13 @@ class Contact < Address
 
   def remove_contact(contact)
     # remove contact from file
+    File.open('./data/contacts.txt', 'r') do |file|
+      file.each_line do |line|
+        if line.include?(contact.first_name)
+          file.delete(line)
+        end
+      end
+    end
   end
 
 
