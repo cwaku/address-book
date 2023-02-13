@@ -11,7 +11,6 @@ class Contact < Address
     @contacts = []
   end
 
-
   def add_contact
     @contacts << self
     save_contact(self)
@@ -22,17 +21,13 @@ class Contact < Address
     remove_contact(self)
   end
 
-  def edit_contact(contact)
-    puts "(#{contact.first_name}):"
-    new_first_name = gets.chomp
-    contact.first_name = new_first_name unless new_first_name.empty?
-    puts "(#{contact.last_name}):"
-    new_last_name = gets.chomp
-    contact.last_name = new_last_name unless new_last_name.empty?
-    puts "(#{contact.contact_number}):"
-    new_contact_number = gets.chomp
-    contact.contact_number = new_contact_number unless new_contact_number.empty?
+  def edit_contact(id)
+    contact = @contacts[id - 1]
+    edit_contact(contact)
+    save_contact(self)
   end
+
+  
 
 
 
@@ -65,6 +60,4 @@ class Contact < Address
       end
     end
   end
-
-
 end

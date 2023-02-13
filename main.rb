@@ -1,9 +1,9 @@
 require_relative './modules/contact'
-require_relative './routines'
+# require_relative './routines'
 require_relative './save_contact'
 
 class Main
-  include Routines
+  # include Routines
   include SaveContacts
 
   def initialize
@@ -58,9 +58,13 @@ class Main
     else
       puts 'Enter the contact id to delete'
       id = gets.chomp.to_i
-      @contacts.delete_at(id - 1)
 
-      save_contact(@contacts)
+      contact = @contacts[id - 1]
+      remove_contact(contact)
+      # contact.delete_contact(id)
+      # @contacts.delete_at(id - 1)
+
+      # save_contact(@contacts)
       puts 'Contact deleted successfully'
     end
   end
@@ -84,9 +88,7 @@ class Main
       new_contact_number = gets.chomp
       contact.contact_number = new_contact_number unless new_contact_number.empty?
 
-      save_contact(@contacts)
-      puts 'Contact edited successfully'
-
+      contact.add_contact
       contact.generate_summary
     end
   end
