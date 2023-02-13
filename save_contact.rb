@@ -2,13 +2,6 @@ require_relative './modules/contact'
 require 'json'
 
 module SaveContacts
-  def save_contact(contact)
-    File.write('./data/contacts.json', JSON.generate(contact))
-  end
-
-  def remove_contact(contact)
-    # remove contact from file
-  end
 
   # TODO: Fix this
   def load_contacts

@@ -7,7 +7,7 @@ class Main
   include SaveContacts
 
   def initialize
-    @contacts = load_contacts
+    # @contacts = load_contacts
   end
 
   def start
@@ -19,7 +19,7 @@ class Main
       # invalid option if any other number
       next unless (1..4).include?(options)
 
-      add_contact if options == 1
+      add_contact_routine if options == 1
       edit_contact if options == 2
       list_contacts if options == 3
       delete_contact if options == 4
@@ -36,6 +36,18 @@ class Main
     # print 'Enter your choice: '
 
     gets.chomp.to_i
+  end
+
+  def add_contact_routine
+    puts 'Enter first name'
+    first_name = gets.chomp
+    puts 'Enter last name'
+    last_name = gets.chomp
+    puts 'Enter contact number'
+    contact_number = gets.chomp
+
+    contact = Contact.new(first_name, last_name, contact_number)
+    contact.add_contact
   end
 end
 

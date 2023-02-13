@@ -1,0 +1,4 @@
+{:first_name=>"Ricky", :last_name=>nil, :contact_number=>"3435356356"}
+{:first_name=>"Ricky", :last_name=>nil, :contact_number=>"3456356645"}
+{:first_name=>"Joggg", :last_name=>nil, :contact_number=>"56456465"}
+{:first_name=>"Ricky", :last_name=>"Mormor", :contact_number=>"24535634535"}

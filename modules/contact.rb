@@ -1,4 +1,4 @@
-require_relative './item'
+require_relative './address'
 
 class Contact < Address
   attr_accessor :first_name, :last_name, :contact_number
@@ -6,19 +6,20 @@ class Contact < Address
   def initialize(first_name, last_name, contact_number)
     super()
     @first_name = first_name
-    @last_nzame = last_name
+    @last_name = last_name
     @contact_number = contact_number
     @contacts = []
   end
 
 
-  def add_contact(contact)
-    @contacts << contact
-    save_contact(contact)
+  def add_contact
+    @contacts << self
+    save_contact(self)
   end
 
-  def delete_contact(contact)
-    @contacts.delete(contact)
+  def delete_contact(id)
+    @contacts.delete_at(id - 1)
+    # remove_contact(self)
   end
 
   def edit_contact(contact)
@@ -35,9 +36,28 @@ class Contact < Address
 
 
 
-
+  private
 
   def generate_summary
     puts " First Name: #{first_name} \n Last Name: #{last_name} \n Contact Number: #{contact_number}"
   end
+
+  def save_contact(contact)
+    # Append file to file
+    tempHash = {
+      first_name: contact.first_name,
+      last_name: contact.last_name,
+      contact_number: contact.contact_number
+    }
+
+    File.open('./data/contacts.txt', 'a') do |file|
+      file.puts(tempHash)
+    end
+  end
+
+  def remove_contact(contact)
+    # remove contact from file
+  end
+
+
 end
