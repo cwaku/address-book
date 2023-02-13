@@ -7,7 +7,7 @@ class Main
   include SaveContacts
 
   def initialize
-    # @contacts = load_contacts
+    @contacts = load_contacts
   end
 
   def start
@@ -48,6 +48,32 @@ class Main
 
     contact = Contact.new(first_name, last_name, contact_number)
     contact.add_contact
+  end
+
+  def edit_contact
+    list_contacts
+
+    if @contacts.empty?
+      puts 'Nothing to edit'
+    else
+      puts 'Enter the contact id to edit'
+      id = gets.chomp.to_i
+      contact = @contacts[id - 1]
+      puts "(#{contact.first_name}):"
+      new_first_name = gets.chomp
+      contact.first_name = new_first_name unless new_first_name.empty?
+      puts "(#{contact.last_name}):"
+      new_last_name = gets.chomp
+      contact.last_name = new_last_name unless new_last_name.empty?
+      puts "(#{contact.contact_number}):"
+      new_contact_number = gets.chomp
+      contact.contact_number = new_contact_number unless new_contact_number.empty?
+
+      save_contact(@contacts)
+      puts 'Contact edited successfully'
+
+      contact.generate_summary
+    end
   end
 end
 

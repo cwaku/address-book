@@ -51,7 +51,7 @@ class Contact < Address
     }
 
     File.open('./data/contacts.txt', 'a') do |file|
-      file.puts(tempHash)
+      file.puts(tempHash.to_json)
     end
   end
 

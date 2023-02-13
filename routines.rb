@@ -6,7 +6,7 @@ module Routines
   def list_contacts
     puts 'Contact List is empty' if @contacts.empty?
     @contacts.each_with_index do |contact, i|
-      puts "#{i + 1}. Name: #{contact.first_name} #{contact.last_name} Number: #{contact.contact_number}"
+      puts "#{i + 1}. Name: #{contact["first_name"]} #{contact['last_name']} Number: #{contact['contact_number']}"
     end
   end
 
@@ -25,31 +25,7 @@ module Routines
     end
   end
 
-  def edit_contact
-    list_contacts
-
-    if @contacts.empty?
-      puts 'Nothing to edit'
-    else
-      puts 'Enter the contact id to edit'
-      id = gets.chomp.to_i
-      contact = @contacts[id - 1]
-      puts "(#{contact.first_name}):"
-      new_first_name = gets.chomp
-      contact.first_name = new_first_name unless new_first_name.empty?
-      puts "(#{contact.last_name}):"
-      new_last_name = gets.chomp
-      contact.last_name = new_last_name unless new_last_name.empty?
-      puts "(#{contact.contact_number}):"
-      new_contact_number = gets.chomp
-      contact.contact_number = new_contact_number unless new_contact_number.empty?
-
-      save_contact(@contacts)
-      puts 'Contact edited successfully'
-
-      contact.generate_summary
-    end
-  end
+  
 
   # TODO: Fix this(Purpose => To ask for confirmation before action are taken)
   def confirmation(action)

@@ -1,4 +1,3 @@
-{:first_name=>"Ricky", :last_name=>nil, :contact_number=>"3435356356"}
-{:first_name=>"Ricky", :last_name=>nil, :contact_number=>"3456356645"}
-{:first_name=>"Joggg", :last_name=>nil, :contact_number=>"56456465"}
-{:first_name=>"Ricky", :last_name=>"Mormor", :contact_number=>"24535634535"}
+{"first_name":"fgdfdbh","last_name":"dfhdgdf","contact_number":"45354345"}
+{"first_name":"gcfjgj","last_name":"4","contact_number":"dfhhf"}
+{"first_name":"fhfjfj","last_name":"fjfjghj","contact_number":"6756757"}
