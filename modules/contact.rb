@@ -27,10 +27,6 @@ class Contact < Address
     save_contact(self)
   end
 
-  
-
-
-
   private
 
   def generate_summary
@@ -39,14 +35,14 @@ class Contact < Address
 
   def save_contact(contact)
     # Append file to file
-    tempHash = {
+    temp_hash = {
       first_name: contact.first_name,
       last_name: contact.last_name,
       contact_number: contact.contact_number
     }
 
     File.open('./data/contacts.txt', 'a') do |file|
-      file.puts(tempHash.to_json)
+      file.puts(temp_hash.to_json)
     end
   end
 
@@ -54,9 +50,7 @@ class Contact < Address
     # remove contact from file
     File.open('./data/contacts.txt', 'r') do |file|
       file.each_line do |line|
-        if line.include?(contact.first_name)
-          file.delete(line)
-        end
+        file.delete(line) if line.include?(contact.first_name)
       end
     end
   end

@@ -1,7 +1,6 @@
 # Description: This module contains all the methods that are used to perform the CRUD operations on the contact list
 
 module Routines
-
   def delete_contact
     list_contacts
 
@@ -16,8 +15,6 @@ module Routines
       puts 'Contact deleted successfully'
     end
   end
-
-  
 
   # TODO: Fix this(Purpose => To ask for confirmation before action are taken)
   def confirmation(action)

@@ -59,8 +59,8 @@ class Main
       puts 'Enter the contact id to delete'
       id = gets.chomp.to_i
 
-      contact = @contacts[id - 1]
-      remove_contact(contact)
+      # contact = @contacts[id - 1]
+      remove_contact(id)
       # contact.delete_contact(id)
       # @contacts.delete_at(id - 1)
 
