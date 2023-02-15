@@ -16,15 +16,10 @@ class Contact < Address
     save_contact(self)
   end
 
-  def delete_contact(id)
-    @contacts.delete_at(id - 1)
-    remove_contact(self)
-  end
-
   def edit_contact(id)
     contact = @contacts[id - 1]
     edit_contact(contact)
-    save_contact(self)
+    # save_contact(self)
   end
 
   private
@@ -34,7 +29,6 @@ class Contact < Address
   end
 
   def save_contact(contact)
-    # Append file to file
     temp_hash = {
       first_name: contact.first_name,
       last_name: contact.last_name,
@@ -43,15 +37,6 @@ class Contact < Address
 
     File.open('./data/contacts.txt', 'a') do |file|
       file.puts(temp_hash.to_json)
-    end
-  end
-
-  def remove_contact(contact)
-    # remove contact from file
-    File.open('./data/contacts.txt', 'r') do |file|
-      file.each_line do |line|
-        file.delete(line) if line.include?(contact.first_name)
-      end
     end
   end
 end

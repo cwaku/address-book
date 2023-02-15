@@ -33,8 +33,6 @@ class Main
     puts '4. Delete Contact'
     puts '5. Exit'
 
-    # print 'Enter your choice: '
-
     gets.chomp.to_i
   end
 
@@ -48,6 +46,8 @@ class Main
 
     contact = Contact.new(first_name, last_name, contact_number)
     contact.add_contact
+    load_contacts
+    puts 'Contact added successfully'
   end
 
   def delete_contact_routine
@@ -59,12 +59,7 @@ class Main
       puts 'Enter the contact id to delete'
       id = gets.chomp.to_i
 
-      # contact = @contacts[id - 1]
       remove_contact(id)
-      # contact.delete_contact(id)
-      # @contacts.delete_at(id - 1)
-
-      # save_contact(@contacts)
       puts 'Contact deleted successfully'
     end
   end

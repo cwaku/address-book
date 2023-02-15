@@ -25,8 +25,6 @@ module SaveContacts
     File.rename('./data/contacts.txt.tmp', './data/contacts.txt')
   end
 
-
-  # TODO: Fix this
   def load_contacts
     data = []
 
@@ -42,17 +40,3 @@ module SaveContacts
     data
   end
 end
-
-
-
-
-# File.open('./data/contacts.txt.tmp', 'w') do |out_file|
-#   File.foreach('./data/contacts.txt') do |line|
-#     out_file.puts(line) unless line.chomp == "{\"first_name\":\"#{contact['first_name']}\",\"last_name\":\"#{contact['last_name']}\",\"contact_number\":\"#{contact['contact_number']}\"}"
-#       puts line
-#   end
-# end
-# end
-# File.delete('./data/contacts.txt')
-# File.rename('./data/contacts.txt.tmp', './data/contacts.txt')
-# end
