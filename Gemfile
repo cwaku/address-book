@@ -4,4 +4,5 @@ gem 'pg'
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-activerecord'
+gem 'sinatra-contrib'
 gem 'rubocop', require: false

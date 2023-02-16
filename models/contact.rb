@@ -1,4 +1,4 @@
-require 
+require 'sinatra'
 require_relative './address'
 
 class Contact < Address
