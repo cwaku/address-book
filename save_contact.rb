@@ -1,4 +1,4 @@
-require_relative './modules/contact'
+require_relative './model/contact'
 require 'json'
 
 module SaveContacts

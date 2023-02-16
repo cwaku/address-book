@@ -1,4 +1,4 @@
-require_relative './modules/contact'
+require_relative './model/contact'
 # require_relative './routines'
 require_relative './save_contact'
 
