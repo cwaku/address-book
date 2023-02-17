@@ -1,11 +1,7 @@
 require 'sinatra'
 require_relative './models/contact'
-# require_relative './routines'
-require_relative './save_contact'
 
 class Main
-  # include Routines
-  #include SaveContacts
 
   def initialize
     @contacts = ContactDB.new
@@ -47,42 +43,24 @@ class Main
     puts 'Enter contact number'
     contact_number = gets.chomp
     puts contact_number
-    # contact_params = 
-    # contact = Contact.new
-
-    # temp_hash = {
-    #   first_name: first_name,
-    #   last_name: last_name,
-    #   contact_number: contact_number
-    # }
-    # contacts = ContactDB.new
     @contacts.add_contact(first_name, last_name, contact_number)
-    # load_contacts
-    # puts 'Contact added successfully'
   end
 
   def list_contacts_routine
-    # contacts = ContactDB.new
     @contacts.list_contacts
   end
 
   def delete_contact_routine
     list_contacts_routine
 
-    if @contacts.empty?
-      puts 'Nothing to delete'
-    else
       puts 'Enter the contact id to delete'
       id = gets.chomp.to_i
 
-      remove_contact(id)
-      puts 'Contact deleted successfully'
-    end
+      @contacts.delete_contact(id)
   end
 
   def edit_contact
     list_contacts_routine
-    # contacts = ContactDB.new
 
     puts 'Enter the contact id to edit'
     id = gets.chomp.to_i
@@ -90,18 +68,12 @@ class Main
 
     puts "(#{contact.first_name}):"
     new_first_name = gets.chomp
-    # contact.first_name = new_first_name unless new_first_name.empty?
     puts "(#{contact.last_name}):"
     new_last_name = gets.chomp
-    # contact.last_name = new_last_name unless new_last_name.empty?
     puts "(#{contact.contact_number}):"
     new_contact_number = gets.chomp
 
     @contacts.edit_contact(id, new_first_name, new_last_name, new_contact_number)
-    # contact.contact_number = new_contact_number unless new_contact_number.empty?
-
-    # contact.add_contact
-    # contact.generate_summary
   end
 end
 

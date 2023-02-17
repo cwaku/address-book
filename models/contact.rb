@@ -1,4 +1,3 @@
-# require_relative './address'
 require 'sinatra'
 require 'sinatra/activerecord'
 
@@ -43,8 +42,18 @@ class ContactDB
       puts 'Contact edited succesfully'
       else
         puts 'Unable to edit contact'
-      end
     end
+  end
+
+  def delete_contact(id)
+    # contact = Contact.find(id)
+
+    if Contact.destroy(id)
+      puts 'Contact Deleted Successfully'
+    else
+      puts 'Unable to delete'
+    end
+  end
 
   private
 
