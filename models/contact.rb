@@ -18,6 +18,21 @@ class ContactDB
     end
   end
 
+  def list_contacts
+    contacts = Contact.all
+
+    if contacts.empty?
+      puts 'Contact List is Empty. Please add some to be able to delete'
+    else
+      contacts.each_with_index do |contact, index|
+        puts '-------------------------------------------------------------------------------------------------------------'
+        puts "Contact ID: #{contact.id}"
+        puts "First Name: #{contact.first_name}, Last Name: #{contact.last_name}, Contact Number:#{contact.contact_number}"
+        puts '-------------------------------------------------------------------------------------------------------------'
+      end
+    end
+  end
+
   def edit_contact(id, first_name, last_name, contact_number)
     contact = Contact.find_by(id)
     if contact.update(first_name: first_name, last_name: last_name, contact_number: contact_number)

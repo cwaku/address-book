@@ -22,7 +22,7 @@ class Main
 
       add_contact_routine if options == 1
       edit_contact if options == 2
-      list_contacts if options == 3
+      list_contacts_routine if options == 3
       delete_contact_routine if options == 4
     end
   end
@@ -55,14 +55,19 @@ class Main
     #   last_name: last_name,
     #   contact_number: contact_number
     # }
-    contact = ContactDB.new
-    contact.add_contact(first_name, last_name, contact_number)
+    contacts = ContactDB.new
+    contacts.add_contact(first_name, last_name, contact_number)
     # load_contacts
     # puts 'Contact added successfully'
   end
 
+  def list_contacts_routine
+    contacts = ContactDB.new
+    contacts.list_contacts
+  end
+
   def delete_contact_routine
-    list_contacts
+    list_contacts_routine
 
     if @contacts.empty?
       puts 'Nothing to delete'

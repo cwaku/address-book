@@ -3,12 +3,13 @@ require 'json'
 
 module SaveContacts
   def list_contacts
-    @contacts = load_contacts
-    @contacts.each_with_index do |contact, index|
-      puts "Contact ID: #{index + 1}"
-      puts "First Name: #{contact['first_name']} Last Name: #{contact['last_name']} Contact Number: #{contact['contact_number']}"
-      puts '---------------------'
-    end
+    contacts = Contact.all
+    puts contacts
+    # contacts.each_with_index do |contact, index|
+    #   puts "Contact ID: #{index + 1}"
+    #   puts "First Name: #{contact['first_name']} Last Name: #{contact['last_name']} Contact Number: #{contact['contact_number']}"
+    #   puts '---------------------'
+    # end
   end
 
   def remove_contact(id)
