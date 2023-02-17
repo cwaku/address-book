@@ -8,7 +8,7 @@ class Main
   #include SaveContacts
 
   def initialize
-    #@contacts = load_contacts
+    @contacts = ContactDB.new
   end
 
   def start
@@ -55,15 +55,15 @@ class Main
     #   last_name: last_name,
     #   contact_number: contact_number
     # }
-    contacts = ContactDB.new
-    contacts.add_contact(first_name, last_name, contact_number)
+    # contacts = ContactDB.new
+    @contacts.add_contact(first_name, last_name, contact_number)
     # load_contacts
     # puts 'Contact added successfully'
   end
 
   def list_contacts_routine
-    contacts = ContactDB.new
-    contacts.list_contacts
+    # contacts = ContactDB.new
+    @contacts.list_contacts
   end
 
   def delete_contact_routine
@@ -81,27 +81,27 @@ class Main
   end
 
   def edit_contact
-    list_contacts
+    list_contacts_routine
+    # contacts = ContactDB.new
 
-    if @contacts.empty?
-      puts 'Nothing to edit'
-    else
-      puts 'Enter the contact id to edit'
-      id = gets.chomp.to_i
-      contact = @contacts[id - 1]
-      puts "(#{contact.first_name}):"
-      new_first_name = gets.chomp
-      contact.first_name = new_first_name unless new_first_name.empty?
-      puts "(#{contact.last_name}):"
-      new_last_name = gets.chomp
-      contact.last_name = new_last_name unless new_last_name.empty?
-      puts "(#{contact.contact_number}):"
-      new_contact_number = gets.chomp
-      contact.contact_number = new_contact_number unless new_contact_number.empty?
+    puts 'Enter the contact id to edit'
+    id = gets.chomp.to_i
+    contact = @contacts.get_contact(id)
 
-      contact.add_contact
-      contact.generate_summary
-    end
+    puts "(#{contact.first_name}):"
+    new_first_name = gets.chomp
+    # contact.first_name = new_first_name unless new_first_name.empty?
+    puts "(#{contact.last_name}):"
+    new_last_name = gets.chomp
+    # contact.last_name = new_last_name unless new_last_name.empty?
+    puts "(#{contact.contact_number}):"
+    new_contact_number = gets.chomp
+
+    @contacts.edit_contact(id, new_first_name, new_last_name, new_contact_number)
+    # contact.contact_number = new_contact_number unless new_contact_number.empty?
+
+    # contact.add_contact
+    # contact.generate_summary
   end
 end
 

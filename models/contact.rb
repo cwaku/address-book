@@ -18,6 +18,10 @@ class ContactDB
     end
   end
 
+  def get_contact(id)
+    return contact = Contact.find(id)
+  end
+
   def list_contacts
     contacts = Contact.all
 
@@ -33,9 +37,9 @@ class ContactDB
     end
   end
 
-  def edit_contact(id, first_name, last_name, contact_number)
-    contact = Contact.find_by(id)
-    if contact.update(first_name: first_name, last_name: last_name, contact_number: contact_number)
+  def edit_contact(id, new_first_name, new_last_name, new_contact_number)
+    contact = Contact.find(id)
+    if contact.update(first_name: new_first_name, last_name: new_last_name, contact_number: new_contact_number)
       puts 'Contact edited succesfully'
       else
         puts 'Unable to edit contact'
