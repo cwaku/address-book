@@ -58,7 +58,7 @@ class Main
     contact = ContactDB.new
     contact.add_contact(first_name, last_name, contact_number)
     # load_contacts
-    puts 'Contact added successfully'
+    # puts 'Contact added successfully'
   end
 
   def delete_contact_routine
