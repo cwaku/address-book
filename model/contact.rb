@@ -1,5 +1,5 @@
-require 
-require_relative './address'
+# require
+# require_relative './address'
 
 class Contact < Address
   attr_accessor :first_name, :last_name, :contact_number

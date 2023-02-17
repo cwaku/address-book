@@ -1,13 +1,14 @@
-require_relative './model/contact'
+require 'sinatra'
+require_relative './models/contact'
 # require_relative './routines'
 require_relative './save_contact'
 
 class Main
   # include Routines
-  include SaveContacts
+  #include SaveContacts
 
   def initialize
-    @contacts = load_contacts
+    #@contacts = load_contacts
   end
 
   def start
@@ -39,14 +40,24 @@ class Main
   def add_contact_routine
     puts 'Enter first name'
     first_name = gets.chomp
+    puts first_name
     puts 'Enter last name'
     last_name = gets.chomp
+    puts last_name
     puts 'Enter contact number'
     contact_number = gets.chomp
+    puts contact_number
+    # contact_params = 
+    # contact = Contact.new
 
-    contact = Contact.new(first_name, last_name, contact_number)
-    contact.add_contact
-    load_contacts
+    # temp_hash = {
+    #   first_name: first_name,
+    #   last_name: last_name,
+    #   contact_number: contact_number
+    # }
+    contact = ContactDB.new
+    contact.add_contact(first_name, last_name, contact_number)
+    # load_contacts
     puts 'Contact added successfully'
   end
 

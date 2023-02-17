@@ -1,4 +1,4 @@
-class Address
+class Address < ApplicationRecord
   attr_accessor :id
 
   def initialize()

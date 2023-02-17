@@ -1,4 +1,4 @@
-require_relative './model/contact'
+require_relative './models/contact'
 require 'json'
 
 module SaveContacts
@@ -15,10 +15,12 @@ module SaveContacts
     @contacts = load_contacts
 
     contact = @contacts[id - 1]
-  # remove contact from file
+    # remove contact from file
     File.open('./data/contacts.txt.tmp', 'w') do |file|
       File.foreach('./data/contacts.txt') do |line|
-        file.puts(line) unless line.chomp == "{\"first_name\":\"#{contact['first_name']}\",\"last_name\":\"#{contact['last_name']}\",\"contact_number\":\"#{contact['contact_number']}\"}"
+        unless line.chomp == "{\"first_name\":\"#{contact['first_name']}\",\"last_name\":\"#{contact['last_name']}\",\"contact_number\":\"#{contact['contact_number']}\"}"
+          file.puts(line)
+        end
       end
     end
     File.delete('./data/contacts.txt')
