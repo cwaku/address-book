@@ -1,11 +1,10 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 
-
 class ContactDB
   class Contact < ActiveRecord::Base
   end
- 
+
   def add_contact(first_name, last_name, contact_number)
     # TODO: Check by index to see if comtact number already exists
     # before adding.
@@ -18,7 +17,7 @@ class ContactDB
   end
 
   def get_contact(id)
-    return contact = Contact.find(id)
+    Contact.find(id)
   end
 
   def list_contacts
@@ -27,11 +26,11 @@ class ContactDB
     if contacts.empty?
       puts 'Contact List is Empty. Please add some to be able to delete'
     else
-      contacts.each_with_index do |contact, index|
-        puts '-------------------------------------------------------------------------------------------------------------'
+      contacts.each_with_index do |contact, _index|
+        puts '--------------------------------------------------------------------------------------'
         puts "Contact ID: #{contact.id}"
-        puts "First Name: #{contact.first_name}, Last Name: #{contact.last_name}, Contact Number:#{contact.contact_number}"
-        puts '-------------------------------------------------------------------------------------------------------------'
+        puts "Name: #{contact.first_name} #{contact.last_name}, Contact Number: #{contact.contact_number}"
+        puts '--------------------------------------------------------------------------------------'
       end
     end
   end
@@ -40,8 +39,8 @@ class ContactDB
     contact = Contact.find(id)
     if contact.update(first_name: new_first_name, last_name: new_last_name, contact_number: new_contact_number)
       puts 'Contact edited succesfully'
-      else
-        puts 'Unable to edit contact'
+    else
+      puts 'Unable to edit contact'
     end
   end
 

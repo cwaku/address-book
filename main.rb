@@ -2,7 +2,6 @@ require 'sinatra'
 require_relative './models/contact'
 
 class Main
-
   def initialize
     @contacts = ContactDB.new
   end
@@ -53,10 +52,10 @@ class Main
   def delete_contact_routine
     list_contacts_routine
 
-      puts 'Enter the contact id to delete'
-      id = gets.chomp.to_i
+    puts 'Enter the contact id to delete'
+    id = gets.chomp.to_i
 
-      @contacts.delete_contact(id)
+    @contacts.delete_contact(id)
   end
 
   def edit_contact
