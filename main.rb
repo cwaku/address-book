@@ -9,16 +9,16 @@ class Main
   def start
     puts 'Welcome to Address Book'
     loop do
-      options = list_options
-      break if options == 5
+      option = list_options
+      break if option == 5
 
-      # invalid option if any other number
-      next unless (1..4).include?(options)
+      # print invalid option if option is not 1, 2, 3, 4 or 5
+      invalid_option unless [1, 2, 3, 4, 5].include?(option)
 
-      add_contact_routine if options == 1
-      edit_contact if options == 2
-      list_contacts_routine if options == 3
-      delete_contact_routine if options == 4
+      add_contact_routine if option == 1
+      edit_contact if option == 2
+      list_contacts_routine if option == 3
+      delete_contact_routine if option == 4
     end
   end
 
@@ -35,14 +35,18 @@ class Main
   def add_contact_routine
     puts 'Enter first name'
     first_name = gets.chomp
-    puts first_name
     puts 'Enter last name'
     last_name = gets.chomp
-    puts last_name
     puts 'Enter contact number'
     contact_number = gets.chomp
-    puts contact_number
-    @contacts.add_contact(first_name, last_name, contact_number)
+
+    confirmation = action_confirmation('save')
+    @contacts.add_contact(first_name, last_name, contact_number) if confirmation == 'y'
+    exit_to_menu = return_to_menu('save') if confirmation == 'n'
+
+    return if exit_to_menu == 'm'
+
+    send(:add_contact_routine) if exit_to_menu == 'a'
   end
 
   def list_contacts_routine
@@ -73,6 +77,30 @@ class Main
     new_contact_number = gets.chomp
 
     @contacts.edit_contact(id, new_first_name, new_last_name, new_contact_number)
+  end
+
+  private
+
+  def invalid_option
+    puts '---------------------------------'
+    puts 'Invalid Option. Please try again'
+    puts '---------------------------------'
+  end
+
+  def action_confirmation(action)
+    puts "Are you sure you want to #{action} this contact? (y/n)"
+    gets.chomp
+  end
+
+  def return_to_menu(action)
+    puts "Would you like to return to the menu or #{action} another contact? (m/a)"
+    gets.chomp
+  end
+
+  def redo_action(method)
+    puts 'Please choose between the provided options'
+    puts '-----------------------------------------'
+    send(method)
   end
 end
 
