@@ -76,7 +76,14 @@ class Main
     puts "(#{contact.contact_number}):"
     new_contact_number = gets.chomp
 
-    @contacts.edit_contact(id, new_first_name, new_last_name, new_contact_number)
+    confirmation = action_confirmation('edit')
+    @contacts.edit_contact(id, new_first_name, new_last_name, new_contact_number) if confirmation == 'y'
+
+    exit_to_menu = return_to_menu('edit') if confirmation == 'n'
+
+    return if exit_to_menu == 'm'
+
+    send(:edit_contact) if exit_to_menu == 'a'
   end
 
   private
