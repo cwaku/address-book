@@ -1,4 +1,4 @@
-require 'sinatra'
+# require 'sinatra'
 require_relative './models/contact'
 
 class Main
