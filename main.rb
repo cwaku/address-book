@@ -59,7 +59,13 @@ class Main
     puts 'Enter the contact id to delete'
     id = gets.chomp.to_i
 
-    @contacts.delete_contact(id)
+    confirmation = action_confirmation('delete')
+    @contacts.delete_contact(id) if confirmation == 'y'
+    exit_to_menu = return_to_menu('delete') if confirmation == 'n'
+
+    return if exit_to_menu == 'm'
+
+    send(:delete_contact_routine) if exit_to_menu == 'a'
   end
 
   def edit_contact
